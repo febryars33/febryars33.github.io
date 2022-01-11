@@ -14,15 +14,82 @@
         * {
             font-family: 'Poppins', sans-serif;
         }
+        .typed-container {
+            height: 2rem;
+        }
     </style>
     <div class="container">
         <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-            <h1>Welcome!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <a href="https://github.com/febryars33/" class="btn btn-outline-primary"><i class="bi bi-github"></i> Visit My GitHub</a>
+            <h1 id="translate">Welcome!</h1>
+            <div class="typed-container my-2">
+                <span class="typed-body"></span><span class="user-select-none" id="cursor-blink">|</span>
+            </div>
+            <div class="btn-group mb-5 mt-2">
+                <a href="https://github.com/febryars33/" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://github.com/febryars33/" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://github.com/febryars33/" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://github.com/febryars33/" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="YouTube"><i class="bi bi-youtube"></i></a>
+                <a href="https://github.com/febryars33/" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Discord"><i class="bi bi-discord"></i></a>
+            </div>
+
+            <span class="text-muted small">Created with <i class="bi bi-heart-fill text-danger"></i></span>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        // typed js
+        var options = {
+            strings: ["Hello...", "My name is Febriansyah Riki Setiadi", "I'm WEB Developer", "From....", "Bandung, Jawa Barat", "Indonesia"],
+            loop: true,
+            typeSpeed: 50,
+            startDelay: 1000,
+            backSpeed: 50,
+            backDelay: 1000,
+            smartBackspace: true,
+            showCursor: false,
+        };
+
+        var typed = new Typed('.typed-body', options);
+
+        // cursor blink
+        var cursor = true;
+        var speed = 250;
+
+        setInterval(() => {
+            if(cursor) {
+                document.getElementById('cursor-blink').style.opacity = 0;
+                cursor = false;
+            }
+            else {
+                document.getElementById('cursor-blink').style.opacity = 1;
+                cursor = true;
+            }
+        }, speed);
+        
+        // translate
+        var translate = true;
+        var translate_speed = 10000;
+        
+        setInterval(() => {
+            if(translate) {
+                document.getElementById('translate').innerText = "Welcome!";
+                translate = false;
+            }
+            else {
+                document.getElementById('translate').innerText = "Selamat Datang!";
+                translate = true;
+            }
+        }, translate_speed);
+
+        // Enable tooltips everywhere
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
 </body>
 </html>
